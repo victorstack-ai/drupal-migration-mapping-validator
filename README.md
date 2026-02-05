@@ -26,3 +26,4 @@ drush migrate:mapping-validate my_migration another_migration
 
 - Some source plugins do not implement `fields()`. Those migrations are reported with a warning and skipped.
 - Complex or custom process plugins that reference source properties indirectly may require manual review.
+- Pipeline references (values prefixed with `@`) and `constants/*` mappings are ignored during validation.

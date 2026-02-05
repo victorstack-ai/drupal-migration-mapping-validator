@@ -142,20 +142,36 @@ class MappingValidator {
 
   private function extractSources($source): array {
     if (is_string($source)) {
-      return [$source];
+      return $this->filterSourceValue($source) ? [$source] : [];
     }
 
     if (is_array($source)) {
       $values = [];
       foreach ($source as $value) {
         if (is_string($value)) {
-          $values[] = $value;
+          if ($this->filterSourceValue($value)) {
+            $values[] = $value;
+          }
         }
       }
       return $values;
     }
 
     return [];
+  }
+
+  private function filterSourceValue(string $value): bool {
+    $value = trim($value);
+    if ($value === '') {
+      return FALSE;
+    }
+
+    // Skip process pipeline references and constants.
+    if (str_starts_with($value, '@') || str_starts_with($value, 'constants/')) {
+      return FALSE;
+    }
+
+    return TRUE;
   }
 
 }
