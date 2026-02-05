@@ -1,0 +1,4 @@
+services:
+  migration_mapping_validator.validator:
+    class: Drupal\migration_mapping_validator\Validator\MappingValidator
+    arguments: ['@plugin.manager.migration']

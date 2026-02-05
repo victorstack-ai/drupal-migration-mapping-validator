@@ -1,0 +1,6 @@
+services:
+  migration_mapping_validator.commands:
+    class: Drupal\migration_mapping_validator\Commands\MigrationMappingValidatorCommands
+    arguments: ['@migration_mapping_validator.validator']
+    tags:
+      - { name: drush.command }

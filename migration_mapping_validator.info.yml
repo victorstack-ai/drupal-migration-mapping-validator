@@ -1,0 +1,5 @@
+name: Migration Mapping Validator
+type: module
+description: Validates migrate source mappings before import.
+core_version_requirement: ^10
+package: Migration
